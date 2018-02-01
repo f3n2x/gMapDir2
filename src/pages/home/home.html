@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Welcome Back {{usrMail}} </ion-title>
+    <ion-title>Welcome  </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,15 +9,10 @@
     <img src="../assets/imgs/headBanner.jpg"/>
   </div>
 
-  <div *ngIf ="!usrMail">
-      <button ion-button full (click) ="openLoginPg()">Login/Register</button>
-  </div>
+ 
   
   <div>
-    <button ion-button full (click) ="openSrcTrpPg()">Search Trip</button>
+    <button ion-button full (click) ="openSrcTrpPg()">BUTTON1</button>
 </div>
 
-<div>
-  <button ion-button full (click) ="openNewTrpPg()">New Trip</button>
-</div>
 </ion-content>
