@@ -7,7 +7,6 @@ import {  GoogleMaps, GoogleMap, GoogleMapsEvent,
        } from '@ionic-native/google-maps';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
-import {SearchResultPage} from '../search-result/search-result';   
 
 /**
  * Generated class for the GMapSearchPage page.
@@ -49,13 +48,7 @@ export class GMapSearchPage {
     
   }
 
-  verifyDest(coordinate){
-    if (this.indicator == "start") {
-      this.startP = coordinate;
-    }else{
-      this.endP = coordinate;
-    }
-  }
+  
   
 
   loadMap() {    
@@ -85,7 +78,7 @@ export class GMapSearchPage {
         let idx2 = clickPosStr.indexOf(")");
         let fromLatInp:number = parseFloat(clickPosStr.substr(1,idx-1));
         let fromLongInp:number = parseFloat(clickPosStr.substr(idx+2,idx2-idx-2));
-        alert(fromLatInp+"###"+fromLongInp);
+        //alert(fromLatInp+"###"+fromLongInp);
         
 
 
@@ -107,59 +100,18 @@ export class GMapSearchPage {
             results[0].locality
           ].join(", ");
           console.log("data_: ", address);
-          
+          alert("address:"+address );
         })
                         
-        this.verifyDest(clickPos);
-        if (this.indicator=='start'){
-            marker1.setMap(null);
-            marker1 = new google.maps.Marker({
-              position:clickPos ,title:"START"
-            });        
-            marker1.setMap(map);
-        }else{                   
-          marker2.setMap(null);
-          marker2 = new google.maps.Marker({
-            position:clickPos ,title:"END"
-          });
-          marker2.setMap(map);
-        }
+        
       });            
     }, (err) => {
       console.log(err);
     })  
 }
 
-setStartP(){
-  this.indicator="start";
-}
-
-setEndP(){
-  this.indicator="end";
-}
-
-validatePrm():boolean{
-  var error = 0;
-  if (this.startP == null){
-    alert('Please select Starting Point');
-    error = 1;
-  }else if(this.endP== null){
-    alert('Please select End Point');
-    error = 1;
-  }else if(this.dateTm == null){
-    alert('Please select Date Time');
-    error = 1;
-  }
-  if(error==0)
-    return true;
-  else 
-    return false;  
-}
-
 openSrcRst(){
-  if(this.validatePrm()){
-    this.navCtrl.push(SearchResultPage,{start: this.startP, end: this.endP,date: this.dateTm});
-  }
+  
 }
 
 }
