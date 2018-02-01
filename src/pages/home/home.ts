@@ -22,25 +22,10 @@ export class HomePage {
   usrMail : any;
   
   constructor(public navCtrl: NavController, public platform :Platform, private afAuth:AngularFireAuth) {
-    const unsubscribe = afAuth.auth.onAuthStateChanged( user => {
-      if (!user) {
-        console.log("unsuscribe") ;
-      } 
-      else { 
-        this.usrMail = user.email;
-        console.log("User : "+ user.email) ;        
-      }
-    });
+    
   }
 
-  openLoginPg(){
-    
-        if(this.usrMail){    
-        }
-        else{
-          this.navCtrl.push(LoginPage); 
-        }         
-  }
+ 
     
   openSrcTrpPg(){
     this.navCtrl.push(GMapSearchPage);
