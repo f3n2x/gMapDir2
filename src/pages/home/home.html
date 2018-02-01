@@ -1,14 +1,23 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Welcome Back {{usrMail}} </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div>
+    <img src="../assets/imgs/headBanner.jpg"/>
+  </div>
+
+  <div *ngIf ="!usrMail">
+      <button ion-button full (click) ="openLoginPg()">Login/Register</button>
+  </div>
+  
+  <div>
+    <button ion-button full (click) ="openSrcTrpPg()">Search Trip</button>
+</div>
+
+<div>
+  <button ion-button full (click) ="openNewTrpPg()">New Trip</button>
+</div>
 </ion-content>
